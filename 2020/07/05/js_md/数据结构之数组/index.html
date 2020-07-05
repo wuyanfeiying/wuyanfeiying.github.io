@@ -20,30 +20,34 @@
     var CONFIG = {"hostname":"wuyanfeiying.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="有梦就有希望,勇敢的去追逐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="EasonChu">
-<meta property="og:url" content="https://wuyanfeiying.github.io/index.html">
+  <meta name="description" content="使用构造函数创建数组12const arr &#x3D; new Array()&#x2F;&#x2F;等价于 const arr &#x3D; []   使用构造函数的方式创建数组,不需要传任何参数,就可以得到一个空数组. 如果给数组传递参数,就可以得到有参数的数组.  123const arr &#x3D; new Array(8)&#x2F;&#x2F; console.log(arr)&#x2F;&#x2F; (8) [empty × 8]   有些特殊的场景,可能会用到:”给">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构之数组">
+<meta property="og:url" content="https://wuyanfeiying.github.io/2020/07/05/js_md/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="EasonChu">
-<meta property="og:description" content="有梦就有希望,勇敢的去追逐">
+<meta property="og:description" content="使用构造函数创建数组12const arr &#x3D; new Array()&#x2F;&#x2F;等价于 const arr &#x3D; []   使用构造函数的方式创建数组,不需要传任何参数,就可以得到一个空数组. 如果给数组传递参数,就可以得到有参数的数组.  123const arr &#x3D; new Array(8)&#x2F;&#x2F; console.log(arr)&#x2F;&#x2F; (8) [empty × 8]   有些特殊的场景,可能会用到:”给">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-05T13:34:42.012Z">
+<meta property="article:modified_time" content="2020-07-05T14:52:29.317Z">
 <meta property="article:author" content="EasonChu">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://wuyanfeiying.github.io/">
+<link rel="canonical" href="https://wuyanfeiying.github.io/2020/07/05/js_md/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>EasonChu</title>
+  <title>数据结构之数组 | EasonChu</title>
   
 
 
@@ -157,9 +161,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -175,10 +180,9 @@
       <meta itemprop="name" content="EasonChu">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/05/js_md/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">数据结构之数组</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          数据结构之数组
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -215,7 +219,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="使用构造函数创建数组"><a href="#使用构造函数创建数组" class="headerlink" title="使用构造函数创建数组"></a>使用构造函数创建数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>()</span><br><span class="line"><span class="comment">//等价于 const arr = []</span></span><br></pre></td></tr></table></figure>
+        <h3 id="使用构造函数创建数组"><a href="#使用构造函数创建数组" class="headerlink" title="使用构造函数创建数组"></a>使用构造函数创建数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>()</span><br><span class="line"><span class="comment">//等价于 const arr = []</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>使用构造函数的方式创建数组,不需要传任何参数,就可以得到一个空数组.</li>
@@ -266,156 +270,34 @@
 <p>一维数组需要for循环遍历一次,二维数组需要for循环遍历两次,<strong><em>N维数组则需要for循环遍历N次</em></strong></p>
 </blockquote>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># js</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wuyanfeiying.github.io/2020/06/27/css_md/css_test/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
-      <meta itemprop="name" content="EasonChu">
-      <meta itemprop="description" content="有梦就有希望,勇敢的去追逐">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EasonChu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/27/css_md/css_test/" class="post-title-link" itemprop="url">盒模型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-06-27 23:15:04 / 修改时间：23:59:05" itemprop="dateCreated datePublished" datetime="2020-06-27T23:15:04+08:00">2020-06-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>css的盒模型由content(内容)、padding(内边距)、border(边框)、margin(外边距)组成。但盒子的大小由content+padding+border这几部分决定。</p>
-</blockquote>
-<p><strong>分类：</strong>盒模型分为 <em>IE盒模型</em> 和 <em>W3C 标准盒模型</em><br><strong>区别：</strong>二者的宽度和高度计算规则不一样。</p>
-<ol>
-<li><code>IE 盒模型</code> width = 内容的宽度 + padding + borderheight = 内容的高度 + padding + border</li>
-<li><code>W3C 标准盒模型</code> width = 内容的宽度height = 内容的高度</li>
-</ol>
-<p><strong>使用：</strong>在ie8+浏览器中使用哪个盒模型可以由box-sizing(CSS新增的属性)控制，默认值为content-box，即标准盒模型；如果将box-sizing设为border-box则用的是IE盒模型。如果在ie6,7,8中DOCTYPE缺失会触发IE模式。在当前W3C标准中盒模型是可以通过box-sizing自由的进行切换的。</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/27/css_md/css_test/" rel="prev" title="盒模型">
+      <i class="fa fa-chevron-left"></i> 盒模型
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wuyanfeiying.github.io/2020/06/27/my-first-text/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
-      <meta itemprop="name" content="EasonChu">
-      <meta itemprop="description" content="有梦就有希望,勇敢的去追逐">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EasonChu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/27/my-first-text/" class="post-title-link" itemprop="url">hi~这是我的第一个博客.</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-06-27 14:42:03 / 修改时间：23:13:59" itemprop="dateCreated datePublished" datetime="2020-06-27T14:42:03+08:00">2020-06-27</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>hi~这是我的第一个博客😍.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -468,6 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用构造函数创建数组"><span class="nav-number">1.</span> <span class="nav-text">使用构造函数创建数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的访问和遍历"><span class="nav-number">2.</span> <span class="nav-text">数组的访问和遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组"><span class="nav-number">3.</span> <span class="nav-text">二维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化二维数组"><span class="nav-number">3.1.</span> <span class="nav-text">初始化二维数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化一个二维数组的正确方式"><span class="nav-number">3.2.</span> <span class="nav-text">初始化一个二维数组的正确方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二维数组的访问"><span class="nav-number">3.3.</span> <span class="nav-text">二维数组的访问</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
