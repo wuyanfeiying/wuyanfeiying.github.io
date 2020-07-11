@@ -20,17 +20,22 @@
     var CONFIG = {"hostname":"wuyanfeiying.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="有梦就有希望,勇敢的去追逐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="EasonChu">
-<meta property="og:url" content="https://wuyanfeiying.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+  <meta name="description" content="JSX 是 JavaScript XML的缩写，其本质仍旧是JavaScript 语言，只不过是将JavaScript脚本代码写成XML样式。  1234567891011121314&lt;div id&#x3D;&#39;id-div-react&#39;&gt;&lt;&#x2F;div&gt;&lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;    var divReact &#x3D; document.getEle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【react】JSX简单入门">
+<meta property="og:url" content="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91JSX%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="EasonChu">
-<meta property="og:description" content="有梦就有希望,勇敢的去追逐">
+<meta property="og:description" content="JSX 是 JavaScript XML的缩写，其本质仍旧是JavaScript 语言，只不过是将JavaScript脚本代码写成XML样式。  1234567891011121314&lt;div id&#x3D;&#39;id-div-react&#39;&gt;&lt;&#x2F;div&gt;&lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;    var divReact &#x3D; document.getEle">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-11T16:09:20.084Z">
+<meta property="article:modified_time" content="2020-07-11T16:23:52.672Z">
 <meta property="article:author" content="EasonChu">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="JSX">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://wuyanfeiying.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+<link rel="canonical" href="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91JSX%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8/">
 
 
 <script id="page-configurations">
@@ -38,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 设计模式 | EasonChu</title>
+  <title>【react】JSX简单入门 | EasonChu</title>
   
 
 
@@ -164,57 +169,106 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">设计模式
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91JSX%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
+      <meta itemprop="name" content="EasonChu">
+      <meta itemprop="description" content="有梦就有希望,勇敢的去追逐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EasonChu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【react】JSX简单入门
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-12 00:09:20 / 修改时间：00:23:52" itemprop="dateCreated datePublished" datetime="2020-07-12T00:09:20+08:00">2020-07-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <blockquote>
+<p>JSX 是 JavaScript XML的缩写，其本质仍旧是JavaScript 语言，只不过是将JavaScript脚本代码写成XML样式。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'id-div-react'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/babel"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> divReact = <span class="built_in">document</span>.getElementById(<span class="string">'id-div-react'</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="keyword">const</span> reactSpan = (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">span</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">h3</span>&gt;</span>React JSX<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>Create React DOM by React JSX.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">// 调用 React DOM 对象的 render 方法，将 JSX 代码渲染到页面中进行显示。</span></span></span><br><span class="line">    ReactDOM.render(reactSpan, divReact);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>reactSpan</code> 常量完全符合JavaScript语法,但是对应的值（HTML标签）符合<code>XML</code>格式，因此该语法被称为<code>JSX</code></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-06T13:23:09+08:00"
-              content="2020-07-06">
-          07-06
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+              <a href="/tags/react/" rel="tag"># react</a>
+              <a href="/tags/JSX/" rel="tag"># JSX</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_md/%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url">
-            <span itemprop="name">框架设计模式（MVC/MVP/MVVM）</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/11/react_md/%E3%80%90react%E3%80%91%E8%99%9A%E6%8B%9FDOM/" rel="prev" title="【react】虚拟DOM">
+      <i class="fa fa-chevron-left"></i> 【react】虚拟DOM
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MDkxMS8yNzM5Mw=="></div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -384,6 +438,21 @@
 
   
 
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
 </body>
 </html>
