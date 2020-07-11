@@ -20,19 +20,21 @@
     var CONFIG = {"hostname":"wuyanfeiying.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="褚宏光&#x2F;男&#x2F;90后本科&#x2F;梧州学院&#x2F;产品设计硕士&#x2F;广西师范大学&#x2F;软件工程个人博客： https:&#x2F;&#x2F;wuyanfeiying.github.io&#x2F;邮    箱: chuhongguang@yeah.net">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于博主">
-<meta property="og:url" content="https://wuyanfeiying.github.io/about/index.html">
+  <meta name="description" content="为何要用脚手架 现如今，web端开发项目结构复杂，并非只用单页面文件就可以完成。目前比较流程的做法就是采用Webpack + ES6模式来搭建项目构架，然后通过打包的方式发布web应用。一般业内称这个项目构架“脚手架”，就如同盖房子的时候必需使用脚手架一样。  react脚手架一些涉及点如下 react 官方推荐使用的脚手架： create-react-app   Node.js框架 npm包管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【react】脚手架 create-react-app">
+<meta property="og:url" content="https://wuyanfeiying.github.io/2020/07/11/react_md/%E3%80%90react%E3%80%91%E8%84%9A%E6%89%8B%E6%9E%B6/index.html">
 <meta property="og:site_name" content="EasonChu">
-<meta property="og:description" content="褚宏光&#x2F;男&#x2F;90后本科&#x2F;梧州学院&#x2F;产品设计硕士&#x2F;广西师范大学&#x2F;软件工程个人博客： https:&#x2F;&#x2F;wuyanfeiying.github.io&#x2F;邮    箱: chuhongguang@yeah.net">
+<meta property="og:description" content="为何要用脚手架 现如今，web端开发项目结构复杂，并非只用单页面文件就可以完成。目前比较流程的做法就是采用Webpack + ES6模式来搭建项目构架，然后通过打包的方式发布web应用。一般业内称这个项目构架“脚手架”，就如同盖房子的时候必需使用脚手架一样。  react脚手架一些涉及点如下 react 官方推荐使用的脚手架： create-react-app   Node.js框架 npm包管理">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-05T16:36:30.546Z">
-<meta property="article:modified_time" content="2020-07-05T16:36:30.546Z">
+<meta property="article:published_time" content="2020-07-11T13:16:47.650Z">
+<meta property="article:modified_time" content="2020-07-11T13:48:15.327Z">
 <meta property="article:author" content="EasonChu">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://wuyanfeiying.github.io/about/">
+<link rel="canonical" href="https://wuyanfeiying.github.io/2020/07/11/react_md/%E3%80%90react%E3%80%91%E8%84%9A%E6%89%8B%E6%9E%B6/">
 
 
 <script id="page-configurations">
@@ -40,13 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>关于博主 | EasonChu
-</title>
+  <title>【react】脚手架 create-react-app | EasonChu</title>
   
 
 
@@ -164,48 +165,121 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wuyanfeiying.github.io/2020/07/11/react_md/%E3%80%90react%E3%80%91%E8%84%9A%E6%89%8B%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
+      <meta itemprop="name" content="EasonChu">
+      <meta itemprop="description" content="有梦就有希望,勇敢的去追逐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EasonChu">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【react】脚手架 create-react-app
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">关于博主
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2020-07-11 21:16:47 / 修改时间：21:48:15" itemprop="dateCreated datePublished" datetime="2020-07-11T21:16:47+08:00">2020-07-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="为何要用脚手架"><a href="#为何要用脚手架" class="headerlink" title="为何要用脚手架"></a>为何要用脚手架</h3><blockquote>
+<p>现如今，web端开发项目结构复杂，并非只用单页面文件就可以完成。目前比较流程的做法就是采用<code>Webpack + ES6</code>模式来搭建项目构架，然后通过打包的方式发布web应用。<br>一般业内称这个项目构架“脚手架”，就如同盖房子的时候必需使用脚手架一样。</p>
+</blockquote>
+<h3 id="react脚手架一些涉及点如下"><a href="#react脚手架一些涉及点如下" class="headerlink" title="react脚手架一些涉及点如下"></a>react脚手架一些涉及点如下</h3><blockquote>
+<p>react 官方推荐使用的脚手架： <code>create-react-app</code></p>
+</blockquote>
+<ol>
+<li>Node.js框架</li>
+<li>npm包管理工具</li>
+<li>Webpack模块打包器</li>
+<li>ES6(ECMAScript 6)</li>
+<li>Babel 编译器</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+              <a href="/tags/react/" rel="tag"># react</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/11/react_md/%E3%80%90react%E3%80%91%E5%88%9D%E8%AF%86/" rel="prev" title="【react】初识(概述/优势/hello word)">
+      <i class="fa fa-chevron-left"></i> 【react】初识(概述/优势/hello word)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/11/react_md/%E3%80%90react%E3%80%91%E7%AE%80%E8%BF%B0NodeJs,npm,Webpack,Es6%E5%92%8CBabel/" rel="next" title="【react】简述NodeJs,npm,Webpack,Es6和Babel">
+      【react】简述NodeJs,npm,Webpack,Es6和Babel <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <p>褚宏光/男/90后<br>本科/梧州学院/产品设计<br>硕士/广西师范大学/软件工程<br>个人博客： <a href="https://wuyanfeiying.github.io/">https://wuyanfeiying.github.io/</a><br>邮    箱: <a href="mailto:chuhongguang@yeah.net">chuhongguang@yeah.net</a></p>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MDkxMS8yNzM5Mw=="></div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -252,6 +326,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为何要用脚手架"><span class="nav-number">1.</span> <span class="nav-text">为何要用脚手架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react脚手架一些涉及点如下"><span class="nav-number">2.</span> <span class="nav-text">react脚手架一些涉及点如下</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -375,6 +450,21 @@
 
   
 
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
 </body>
 </html>
