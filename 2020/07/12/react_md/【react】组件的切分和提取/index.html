@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wuyanfeiying.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在开发过程中，往往会形成功能模块不清晰、嵌套过多、很难复用的代码，这就需要开发人员对React组件进行切分，并提取出逻辑清晰、可高度复用的小组件，有利于代码的修改和维护。   对业务逻辑分类、归纳、精简。 构建出逻辑清晰且高度复用的组件是非常有价值的工作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【react】组件的切分和提取">
+<meta property="og:url" content="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%87%E5%88%86%E5%92%8C%E6%8F%90%E5%8F%96/index.html">
+<meta property="og:site_name" content="EasonChu">
+<meta property="og:description" content="在开发过程中，往往会形成功能模块不清晰、嵌套过多、很难复用的代码，这就需要开发人员对React组件进行切分，并提取出逻辑清晰、可高度复用的小组件，有利于代码的修改和维护。   对业务逻辑分类、归纳、精简。 构建出逻辑清晰且高度复用的组件是非常有价值的工作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-12T08:07:26.876Z">
+<meta property="article:modified_time" content="2020-07-12T08:19:57.959Z">
+<meta property="article:author" content="EasonChu">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%87%E5%88%86%E5%92%8C%E6%8F%90%E5%8F%96/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【react】组件的切分和提取 | EasonChu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">EasonChu</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">hi~我是褚宏光,欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook" rel="section"><i class="fa fa-calendar fa-fw"></i>留言</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/wuyanfeiying" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%87%E5%88%86%E5%92%8C%E6%8F%90%E5%8F%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
+      <meta itemprop="name" content="EasonChu">
+      <meta itemprop="description" content="有梦就有希望,勇敢的去追逐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EasonChu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【react】组件的切分和提取
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-12 16:07:26 / 修改时间：16:19:57" itemprop="dateCreated datePublished" datetime="2020-07-12T16:07:26+08:00">2020-07-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>在开发过程中，往往会形成功能模块不清晰、嵌套过多、很难复用的代码，这就需要开发人员对React组件进行切分，并提取出逻辑清晰、可高度复用的小组件，有利于代码的修改和维护。</p>
+</blockquote>
+<ul>
+<li>对业务逻辑分类、归纳、精简。</li>
+<li>构建出逻辑清晰且高度复用的组件是非常有价值的工作。</li>
+</ul>
+<p>demo:</p>
+<h4 id="优化前："><a href="#优化前：" class="headerlink" title="优化前："></a>优化前：</h4><p>数据结构杂乱，图片、用户信息、日期，存在复杂的嵌套关系。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> divReact = <span class="built_in">document</span>.getElementById(<span class="string">'id-div-react'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatDate</span>(<span class="params">date</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> date.toLocaleDateString();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserDetail</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"cssUserDetail"</span>&gt;</span><br><span class="line">            &lt;span className=<span class="string">"cssAvatar"</span>&gt;</span><br><span class="line">                &lt;img className=<span class="string">"cssAvaterImg"</span></span><br><span class="line">                     src=&#123;props.url&#125;</span><br><span class="line">                     alt=&#123;props.alt&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-center"</span>&gt;Nickname: &#123;props.nickname&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>span&gt;</span><br><span class="line">            &lt;span className=<span class="string">"cssUserinfo"</span>&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-left"</span>&gt;Id: &#123;props.id&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">                &lt;p className="p-left"&gt;Name: &#123;props.name&#125;&lt;/</span>p&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-left"</span>&gt;Gender: &#123;props.gender&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">                &lt;p className="p-left"&gt;Age: &#123;props.age&#125;&lt;/</span>p&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-left"</span>&gt;Email: &#123;props.email&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>span&gt;</span><br><span class="line">            &lt;span className=<span class="string">"cssDate"</span>&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-right"</span>&gt;<span class="built_in">Date</span>: &#123;formatDate(props.date)&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>span&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">const userDetail = &lt;UserDetail</span></span><br><span class="line"><span class="regexp">    id="007"</span></span><br><span class="line"><span class="regexp">    name="King de. Wang"</span></span><br><span class="line"><span class="regexp">    nickname="Leo King"</span></span><br><span class="line"><span class="regexp">    gender="male"</span></span><br><span class="line"><span class="regexp">    age="18"</span></span><br><span class="line"><span class="regexp">    email="king@email.com"</span></span><br><span class="line"><span class="regexp">    url="images/</span>avatar.png<span class="string">"</span></span><br><span class="line"><span class="string">    alt="</span>loading...<span class="string">"</span></span><br><span class="line"><span class="string">    date=&#123;new Date()&#125;</span></span><br><span class="line"><span class="string">/&gt;;</span></span><br><span class="line"><span class="string">const reactSpan = (</span></span><br><span class="line"><span class="string">    &lt;span&gt;</span></span><br><span class="line"><span class="string">        &lt;h3&gt;React Component - User Details&lt;/h3&gt;</span></span><br><span class="line"><span class="string">        &#123;userDetail&#125;</span></span><br><span class="line"><span class="string">    &lt;/span&gt;</span></span><br><span class="line"><span class="string">);</span></span><br><span class="line"><span class="string">ReactDOM.render(reactSpan, divReact);</span></span><br></pre></td></tr></table></figure>
+<h4 id="优化中："><a href="#优化中：" class="headerlink" title="优化中："></a>优化中：</h4><p>针对 props 分别对 用户头像区、用户信息区、系统时间区 进行划分。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatDate</span>(<span class="params">date</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> date.toLocaleDateString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserDetail</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"cssUserDetail"</span>&gt;</span><br><span class="line">            &lt;span className=<span class="string">"cssAvatar"</span>&gt;</span><br><span class="line">                &lt;img className=<span class="string">"cssAvaterImg"</span></span><br><span class="line">                     src=&#123;props.avatar.url&#125;</span><br><span class="line">                     alt=&#123;props.avatar.alt&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-center"</span>&gt;Nickname: &#123;props.avatar.nickname&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>span&gt;</span><br><span class="line">            &lt;span className=<span class="string">"cssUserinfo"</span>&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-left"</span>&gt;Id: &#123;props.userinfo.id&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">                &lt;p className="p-left"&gt;Name: &#123;props.userinfo.name&#125;&lt;/</span>p&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-left"</span>&gt;Gender: &#123;props.userinfo.gender&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">                &lt;p className="p-left"&gt;Age: &#123;props.userinfo.age&#125;&lt;/</span>p&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-left"</span>&gt;Email: &#123;props.userinfo.email&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>span&gt;</span><br><span class="line">            &lt;span className=<span class="string">"cssDate"</span>&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-right"</span>&gt;<span class="built_in">Date</span>: &#123;props.date.date&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>span&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 用户头像区、</span></span><br><span class="line"><span class="regexp">const avatar = &#123;</span></span><br><span class="line"><span class="regexp">    url: "images/</span>avatar.png<span class="string">",</span></span><br><span class="line"><span class="string">    alt: "</span>loading...<span class="string">",</span></span><br><span class="line"><span class="string">    nickname: "</span>Leo King<span class="string">"</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string">// 系统时间区</span></span><br><span class="line"><span class="string">const userinfo = &#123;</span></span><br><span class="line"><span class="string">    id: "</span><span class="number">007</span><span class="string">",</span></span><br><span class="line"><span class="string">    name: "</span>King de. Wang<span class="string">",</span></span><br><span class="line"><span class="string">    gender: "</span>male<span class="string">",</span></span><br><span class="line"><span class="string">    age: "</span><span class="number">18</span><span class="string">",</span></span><br><span class="line"><span class="string">    email: "</span>king@email.com<span class="string">"</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string">// 系统时间区</span></span><br><span class="line"><span class="string">const date = &#123;</span></span><br><span class="line"><span class="string">    date: formatDate(new Date())</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string">const userDetail = &lt;UserDetail</span></span><br><span class="line"><span class="string">    avatar=&#123;avatar&#125;</span></span><br><span class="line"><span class="string">    userinfo=&#123;userinfo&#125;</span></span><br><span class="line"><span class="string">    date=&#123;date&#125;</span></span><br><span class="line"><span class="string">/&gt;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="优化后："><a href="#优化后：" class="headerlink" title="优化后："></a>优化后：</h4><p>继续按照业务逻辑划分模块，把业务逻辑相同的提取出来生成组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">const</span> avatar = &#123;</span><br><span class="line">    url: <span class="string">"images/avatar.png"</span>,</span><br><span class="line">    alt: <span class="string">"loading..."</span>,</span><br><span class="line">    nickname: <span class="string">"Leo King"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> userinfo = &#123;</span><br><span class="line">    id: <span class="string">"007"</span>,</span><br><span class="line">    name: <span class="string">"King de. Wang"</span>,</span><br><span class="line">    gender: <span class="string">"male"</span>,</span><br><span class="line">    age: <span class="string">"18"</span>,</span><br><span class="line">    email: <span class="string">"king@email.com"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> date = &#123;</span><br><span class="line">    date: formatDate(<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 头像 组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Avatar</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;span className=<span class="string">"cssAvatar"</span>&gt;</span><br><span class="line">            &lt;img className=<span class="string">"cssAvaterImg"</span></span><br><span class="line">                 src=&#123;props.avatar.url&#125;</span><br><span class="line">                 alt=&#123;props.avatar.alt&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">            &lt;p className=<span class="string">"p-center"</span>&gt;Nickname: &#123;props.avatar.nickname&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>span&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 用户信息 组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserInfo</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;span className=<span class="string">"cssUserinfo"</span>&gt;</span><br><span class="line">            &lt;p className=<span class="string">"p-left"</span>&gt;Id: &#123;props.userinfo.id&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;p className="p-left"&gt;Name: &#123;props.userinfo.name&#125;&lt;/</span>p&gt;</span><br><span class="line">            &lt;p className=<span class="string">"p-left"</span>&gt;Gender: &#123;props.userinfo.gender&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;p className="p-left"&gt;Age: &#123;props.userinfo.age&#125;&lt;/</span>p&gt;</span><br><span class="line">            &lt;p className=<span class="string">"p-left"</span>&gt;Email: &#123;props.userinfo.email&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>span&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 用户描述 组件（包含其他组件）</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserDetail</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"cssUserDetail"</span>&gt;</span><br><span class="line">            &lt;Avatar avatar=&#123;props.avatar&#125; /&gt;</span><br><span class="line">            &lt;UserInfo userinfo=&#123;props.userinfo&#125; /&gt;</span><br><span class="line">            &lt;span className=<span class="string">"cssDate"</span>&gt;</span><br><span class="line">                &lt;p className=<span class="string">"p-right"</span>&gt;<span class="built_in">Date</span>: &#123;props.curdate.date&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>span&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const userDetail = &lt;UserDetail</span></span><br><span class="line"><span class="regexp">    avatar=&#123;avatar&#125;</span></span><br><span class="line"><span class="regexp">    userinfo=&#123;userinfo&#125;</span></span><br><span class="line"><span class="regexp">    curdate=&#123;date&#125;</span></span><br><span class="line"><span class="regexp">/</span>&gt;;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+              <a href="/tags/react/" rel="tag"># react</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/12/react_md/%E3%80%90react%E3%80%91React%20Props/" rel="prev" title="【react】React Props">
+      <i class="fa fa-chevron-left"></i> 【react】React Props
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MDkxMS8yNzM5Mw=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#优化前："><span class="nav-number">1.</span> <span class="nav-text">优化前：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化中："><span class="nav-number">2.</span> <span class="nav-text">优化中：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化后："><span class="nav-number">3.</span> <span class="nav-text">优化后：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="EasonChu"
+      src="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
+  <p class="site-author-name" itemprop="name">EasonChu</p>
+  <div class="site-description" itemprop="description">有梦就有希望,勇敢的去追逐</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wuyanfeiying" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wuyanfeiying" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/238756796" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;238756796" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EasonChu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
