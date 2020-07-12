@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wuyanfeiying.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="JSX 是React框架内置的语法，且专用于React应用开发，开发人员使用JSX方式来实现UI中的虚拟DOM。   在React项目中使用JSX语法，必需引用bacel.js来解析JSX。 在使用type&#x3D;&#39;text&#x2F;babel&#39;属性替换type&#x3D;&#39;text&#x2F;javascript&#39;属性后，浏览器内置的JavaScript解析器就不会解析&lt;script&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【react】React JSX语法">
+<meta property="og:url" content="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91JSX%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="EasonChu">
+<meta property="og:description" content="JSX 是React框架内置的语法，且专用于React应用开发，开发人员使用JSX方式来实现UI中的虚拟DOM。   在React项目中使用JSX语法，必需引用bacel.js来解析JSX。 在使用type&#x3D;&#39;text&#x2F;babel&#39;属性替换type&#x3D;&#39;text&#x2F;javascript&#39;属性后，浏览器内置的JavaScript解析器就不会解析&lt;script&amp;gt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-12T02:04:26.464Z">
+<meta property="article:modified_time" content="2020-07-12T02:33:22.266Z">
+<meta property="article:author" content="EasonChu">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="JSX">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91JSX%E8%AF%AD%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【react】React JSX语法 | EasonChu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">EasonChu</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">hi~我是褚宏光,欢迎来到我的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-guestbook">
+
+    <a href="/guestbook" rel="section"><i class="fa fa-calendar fa-fw"></i>留言</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/wuyanfeiying" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91JSX%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
+      <meta itemprop="name" content="EasonChu">
+      <meta itemprop="description" content="有梦就有希望,勇敢的去追逐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EasonChu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【react】React JSX语法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-12 10:04:26 / 修改时间：10:33:22" itemprop="dateCreated datePublished" datetime="2020-07-12T10:04:26+08:00">2020-07-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>JSX 是React框架内置的语法，且专用于React应用开发，开发人员使用JSX方式来实现UI中的虚拟DOM。</p>
+</blockquote>
+<ul>
+<li>在React项目中使用JSX语法，必需引用<code>bacel.js</code>来解析JSX。</li>
+<li>在使用<code>type=&#39;text/babel&#39;</code>属性替换<code>type=&#39;text/javascript&#39;</code>属性后，浏览器内置的JavaScript解析器就不会解析<code>&lt;script&gt;</code>标签里的脚本代码，转而由<code>“babel.js”</code>进行解析，从而避免<code>React</code>代码与原生<code>JavaScript</code>代码产生混淆。</li>
+</ul>
+<h3 id="JSX一般语法形式"><a href="#JSX一般语法形式" class="headerlink" title="JSX一般语法形式"></a>JSX一般语法形式</h3><ul>
+<li>const 定义常量element</li>
+<li><tag-level-1> 标签元素表示DOM标签，且支持多级嵌套</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = (<span class="xml"><span class="tag">&lt;<span class="name">tag-level-1</span>&gt;</span></span></span><br><span class="line">                &lt;tag-level-2&gt;</span><br><span class="line">                ...</span><br><span class="line">                &lt;tag-level-2&gt;</span><br><span class="line">                &lt;tag-level-1&gt;);</span><br></pre></td></tr></table></figure>
+<h3 id="JSX表达式"><a href="#JSX表达式" class="headerlink" title="JSX表达式"></a>JSX表达式</h3><p>在React JSX中是JavaScript代码要使用<code>{}</code>括起来</p>
+<h4 id="算数表达式"><a href="#算数表达式" class="headerlink" title="算数表达式"></a>算数表达式</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'id-div-react'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/babel"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> divReact = <span class="built_in">document</span>.getElementById(<span class="string">'id-div-react'</span>);</span></span><br><span class="line"><span class="actionscript">     <span class="comment">// 算数表达式</span></span></span><br><span class="line"><span class="actionscript">    <span class="keyword">const</span> reactSpan = (</span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;<span class="name">span</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">h3</span>&gt;</span>JSX Expression - Arithmetic<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>Now is calculating : 3 + 6 = &#123;3 + 6&#125;.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span></span><br><span class="line"><span class="handlebars"><span class="xml">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span></span><br><span class="line">    );</span><br><span class="line">    ReactDOM.render(reactSpan, divReact);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h4><ul>
+<li>(React JSX中的JavaScript表达式是无法使用if条件语句的，但是可以使用三元表达式来替代)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"> <span class="comment">// 条件表达式</span></span><br><span class="line"><span class="keyword">const</span> reactSpan = (</span><br><span class="line">    &lt;span&gt;</span><br><span class="line">        &lt;h3&gt;JSX Expression - Arithmetic&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;p&gt;test exp "1==1",return &#123;1==1?"true":"false&#125;&lt;/</span>p&gt;</span><br><span class="line">    &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">...</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="嵌入表达式"><a href="#嵌入表达式" class="headerlink" title="嵌入表达式"></a>嵌入表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">const</span> name =<span class="string">'chu'</span></span><br><span class="line"> <span class="comment">// 嵌入表达式</span></span><br><span class="line"><span class="keyword">const</span> reactSpan = (</span><br><span class="line">    &lt;span&gt;</span><br><span class="line">        &lt;p&gt;uesrName &#123;name&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>span&gt;</span><br><span class="line">);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象表达式"><a href="#对象表达式" class="headerlink" title="对象表达式"></a>对象表达式</h4><p>支持<code>obj.property</code>的表达式形式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">const</span> userInfo =&#123;</span><br><span class="line">    name:<span class="string">'chu'</span>,</span><br><span class="line">    gender:<span class="string">'man'</span>,</span><br><span class="line">    age:<span class="string">'18'</span></span><br><span class="line">&#125;</span><br><span class="line"> <span class="comment">// 对象表达式</span></span><br><span class="line"><span class="keyword">const</span> reactSpan = (</span><br><span class="line">    &lt;span&gt;</span><br><span class="line">        &lt;p&gt;uesrInfo: name is&#123;userInfo.name&#125; and gender is &#123;userInfo.gender&#125; and age is &#123;userInfo.age&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>span&gt;</span><br><span class="line">);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h4 id="JSX-函数表达式"><a href="#JSX-函数表达式" class="headerlink" title="JSX 函数表达式"></a>JSX 函数表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">const</span> userInfo =&#123;</span><br><span class="line">    name:<span class="string">'chu'</span>,</span><br><span class="line">    gender:<span class="string">'man'</span>,</span><br><span class="line">    age:<span class="string">'18'</span></span><br><span class="line">&#125;</span><br><span class="line"> <span class="comment">// 函数表达式</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">formatUserInfo</span>(<span class="params">ui</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"uesrInfo: name is"</span>+&#123;ui.name&#125;+<span class="string">" and gender is"</span>+ &#123;ui.gender&#125;+<span class="string">" and age is "</span>+&#123;ui.age&#125;;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">const</span> reactSpan = (</span><br><span class="line">    &lt;span&gt;</span><br><span class="line">        &lt;p&gt;&#123;formatUserInfo(userInfo)&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>span&gt;</span><br><span class="line">);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h4 id="JSX-增强函数表达式"><a href="#JSX-增强函数表达式" class="headerlink" title="JSX 增强函数表达式"></a>JSX 增强函数表达式</h4><p>可以使用函数表达式来解决在 JSX中无法使用if条件语句的问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">const</span> userInfo =&#123;</span><br><span class="line">    name:<span class="string">'chu'</span>,</span><br><span class="line">    gender:<span class="string">'man'</span>,</span><br><span class="line">    age:<span class="string">'18'</span></span><br><span class="line">&#125;</span><br><span class="line"> <span class="comment">// 增强函数表达式</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">chooseUserInfo</span>(<span class="params">ui</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(ui)&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"uesrInfo: name is"</span>+&#123;ui.name&#125;+<span class="string">" and gender is"</span>+ &#123;ui.gender&#125;+<span class="string">" and age is "</span>+&#123;ui.age&#125;;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> <span class="string">"not find ui"</span>;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">const</span> reactSpan = (</span><br><span class="line">    &lt;span&gt;</span><br><span class="line">        &lt;p&gt;&#123;chooseUserInfo(userInfo)&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">        &lt;p&gt;&#123;chooseUserInfo()&#125;&lt;/</span>p&gt;</span><br><span class="line">    &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">...</span></span><br></pre></td></tr></table></figure>
+<h4 id="JSX-数组表达式"><a href="#JSX-数组表达式" class="headerlink" title="JSX 数组表达式"></a>JSX 数组表达式</h4><blockquote>
+<p>在JSX中使用数组，数组各项会自动进行展开。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">const</span> arrUserInfo =[</span><br><span class="line">    &lt;span&gt;name is chu&lt;<span class="regexp">/span&gt;,</span></span><br><span class="line"><span class="regexp">    &lt;span&gt;gender is man&lt;/</span>span&gt;,</span><br><span class="line">    &lt;span&gt;and <span class="number">18</span> years old&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">]</span></span><br><span class="line"><span class="regexp"> /</span><span class="regexp">/ 数组表达式</span></span><br><span class="line"><span class="regexp">const reactSpan = (</span></span><br><span class="line"><span class="regexp">    &lt;span&gt;</span></span><br><span class="line"><span class="regexp">        &lt;p&gt;&#123;arrUserInfo&#125;&lt;/</span>p&gt;</span><br><span class="line">    &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">...</span></span><br></pre></td></tr></table></figure>
+<h4 id="JSX-样式表达式"><a href="#JSX-样式表达式" class="headerlink" title="JSX 样式表达式"></a>JSX 样式表达式</h4><blockquote>
+<p>JSX 支持内联形式的 CSS 样式</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">// 样式表达式</span></span><br><span class="line"><span class="keyword">const</span> css_p_lg = &#123;</span><br><span class="line">    fontSize: <span class="number">20</span>,</span><br><span class="line">    fontStyle: <span class="string">"bold"</span>,</span><br><span class="line">    color: <span class="string">"red"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> css_p_md = &#123;</span><br><span class="line">    fontSize: <span class="number">16</span>,</span><br><span class="line">    fontStyle: <span class="string">"normal"</span>,</span><br><span class="line">    color: <span class="string">"green"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> css_p_sm = &#123;</span><br><span class="line">    fontSize: <span class="number">12</span>,</span><br><span class="line">    fontStyle: <span class="string">"italic"</span>,</span><br><span class="line">    color: <span class="string">"blue"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reactSpan = (</span><br><span class="line">    &lt;span&gt;</span><br><span class="line">        &lt;h3&gt;JSX Expression - Style Expression&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;p style=&#123;css_p_lg&#125;&gt;JSX Style Expression&lt;/</span>p&gt;</span><br><span class="line">        &lt;p style=&#123;css_p_md&#125;&gt;JSX Style Expression&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">        &lt;p style=&#123;css_p_sm&#125;&gt;JSX Style Expression&lt;/</span>p&gt;</span><br><span class="line">    &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">...</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="JSX-注释表达式"><a href="#JSX-注释表达式" class="headerlink" title="JSX 注释表达式"></a>JSX 注释表达式</h4><blockquote>
+<p>JSX 中注释内容需要放在大括号<code>{}</code>之中使用，否则注释内容就会在页面内容中显示出来。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"> <span class="comment">// 注释表达式</span></span><br><span class="line"><span class="keyword">const</span> reactSpan = (</span><br><span class="line">    &lt;span&gt;</span><br><span class="line">        &lt;h3&gt;JSX Expression - Comment Expression&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &#123;/</span>* This is a right JSX Comment Expression. *<span class="regexp">/&#125; /</span><span class="regexp">/ 有效</span></span><br><span class="line"><span class="regexp">        /</span>* This is a wrong JSX Comment Expression. *<span class="regexp">/</span></span><br><span class="line"><span class="regexp">    &lt;/</span>span&gt;</span><br><span class="line">);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+              <a href="/tags/react/" rel="tag"># react</a>
+              <a href="/tags/JSX/" rel="tag"># JSX</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/12/react_md/%E3%80%90react%E3%80%91%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6diff%E7%AE%97%E6%B3%95/" rel="prev" title="【react】渲染机制diff算法">
+      <i class="fa fa-chevron-left"></i> 【react】渲染机制diff算法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MDkxMS8yNzM5Mw=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX一般语法形式"><span class="nav-number">1.</span> <span class="nav-text">JSX一般语法形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX表达式"><span class="nav-number">2.</span> <span class="nav-text">JSX表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算数表达式"><span class="nav-number">2.1.</span> <span class="nav-text">算数表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件表达式"><span class="nav-number">2.2.</span> <span class="nav-text">条件表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌入表达式"><span class="nav-number">2.3.</span> <span class="nav-text">嵌入表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象表达式"><span class="nav-number">2.4.</span> <span class="nav-text">对象表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSX-函数表达式"><span class="nav-number">2.5.</span> <span class="nav-text">JSX 函数表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSX-增强函数表达式"><span class="nav-number">2.6.</span> <span class="nav-text">JSX 增强函数表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSX-数组表达式"><span class="nav-number">2.7.</span> <span class="nav-text">JSX 数组表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSX-样式表达式"><span class="nav-number">2.8.</span> <span class="nav-text">JSX 样式表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSX-注释表达式"><span class="nav-number">2.9.</span> <span class="nav-text">JSX 注释表达式</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="EasonChu"
+      src="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
+  <p class="site-author-name" itemprop="name">EasonChu</p>
+  <div class="site-description" itemprop="description">有梦就有希望,勇敢的去追逐</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wuyanfeiying" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wuyanfeiying" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/238756796" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;238756796" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EasonChu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
