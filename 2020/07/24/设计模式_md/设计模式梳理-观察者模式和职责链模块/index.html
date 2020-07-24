@@ -20,17 +20,21 @@
     var CONFIG = {"hostname":"wuyanfeiying.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="有梦就有希望,勇敢的去追逐">
-<meta property="og:type" content="website">
-<meta property="og:title" content="EasonChu">
-<meta property="og:url" content="https://wuyanfeiying.github.io/categories/react/page/2/index.html">
+  <meta name="description" content="创建型设计模式 简单举例如下:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【设计模式梳理】观察者模式和职责链模式">
+<meta property="og:url" content="https://wuyanfeiying.github.io/2020/07/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_md/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A2%B3%E7%90%86-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%9D%97/index.html">
 <meta property="og:site_name" content="EasonChu">
-<meta property="og:description" content="有梦就有希望,勇敢的去追逐">
+<meta property="og:description" content="创建型设计模式 简单举例如下:">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-24T05:44:33.320Z">
+<meta property="article:modified_time" content="2020-07-24T05:59:03.169Z">
 <meta property="article:author" content="EasonChu">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://wuyanfeiying.github.io/categories/react/page/2/">
+<link rel="canonical" href="https://wuyanfeiying.github.io/2020/07/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_md/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A2%B3%E7%90%86-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%9D%97/">
 
 
 <script id="page-configurations">
@@ -38,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: react | EasonChu</title>
+  <title>【设计模式梳理】观察者模式和职责链模式 | EasonChu</title>
   
 
 
@@ -164,240 +168,150 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">react
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wuyanfeiying.github.io/2020/07/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_md/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A2%B3%E7%90%86-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%9D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
+      <meta itemprop="name" content="EasonChu">
+      <meta itemprop="description" content="有梦就有希望,勇敢的去追逐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EasonChu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【设计模式梳理】观察者模式和职责链模式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-24 13:44:33 / 修改时间：13:59:03" itemprop="dateCreated datePublished" datetime="2020-07-24T13:44:33+08:00">2020-07-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-12T16:07:26+08:00"
-              content="2020-07-12">
-          07-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/12/react_md/%E3%80%90react%E3%80%91%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%87%E5%88%86%E5%92%8C%E6%8F%90%E5%8F%96/" itemprop="url">
-            <span itemprop="name">【react】组件的切分和提取</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-12T15:41:32+08:00"
-              content="2020-07-12">
-          07-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/12/react_md/%E3%80%90react%E3%80%91React%20Props/" itemprop="url">
-            <span itemprop="name">【react】React Props</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-12T14:04:19+08:00"
-              content="2020-07-12">
-          07-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/12/react_md/%E3%80%90react%E3%80%91React%E7%BB%84%E4%BB%B6/" itemprop="url">
-            <span itemprop="name">【react】React组件（介绍/函数组件/类组件/组合组件）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-12T10:04:26+08:00"
-              content="2020-07-12">
-          07-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/12/react_md/%E3%80%90react%E3%80%91JSX%E8%AF%AD%E6%B3%95/" itemprop="url">
-            <span itemprop="name">【react】React JSX语法</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-12T00:33:55+08:00"
-              content="2020-07-12">
-          07-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/12/react_md/%E3%80%90react%E3%80%91%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6diff%E7%AE%97%E6%B3%95/" itemprop="url">
-            <span itemprop="name">【react】渲染机制diff算法</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-12T00:09:20+08:00"
-              content="2020-07-12">
-          07-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/12/react_md/%E3%80%90react%E3%80%91JSX%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8/" itemprop="url">
-            <span itemprop="name">【react】JSX简单入门</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-11T23:47:40+08:00"
-              content="2020-07-11">
-          07-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/11/react_md/%E3%80%90react%E3%80%91%E8%99%9A%E6%8B%9FDOM/" itemprop="url">
-            <span itemprop="name">【react】虚拟DOM</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-11T23:08:57+08:00"
-              content="2020-07-11">
-          07-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/11/react_md/%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E3%80%91%E9%A6%96%E6%AC%A1%E6%9E%84%E5%BB%BAcreate-react-app%E6%97%B6%E6%8A%A5%E9%94%99/" itemprop="url">
-            <span itemprop="name">【踩坑记】首次构建create-react-app时报错</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-11T22:14:10+08:00"
-              content="2020-07-11">
-          07-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/11/react_md/%E3%80%90react%E3%80%91%E4%BD%BF%E7%94%A8create-react-app%E8%84%9A%E6%89%8B%E6%9E%B6/" itemprop="url">
-            <span itemprop="name">【react】使用create-react-app脚手架</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-11T21:27:47+08:00"
-              content="2020-07-11">
-          07-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/11/react_md/%E3%80%90react%E3%80%91%E7%AE%80%E8%BF%B0NodeJs,npm,Webpack,Es6%E5%92%8CBabel/" itemprop="url">
-            <span itemprop="name">【react】简述NodeJs,npm,Webpack,Es6和Babel</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+        <h3 id="创建型设计模式"><a href="#创建型设计模式" class="headerlink" title="创建型设计模式"></a>创建型设计模式</h3><blockquote>
+<p>简单举例如下:</p>
+</blockquote>
+<ol>
+<li>工厂模式</li>
+</ol>
+<ul>
+<li>适用场景: 频繁创建一些对象</li>
+<li>例如: 弹窗</li>
+</ul>
+<ol start="2">
+<li>单例模式</li>
+</ol>
+<ul>
+<li>适用场景:保证全局只有一个实例化对象</li>
+<li>例如: vue-router,vuex</li>
+<li>例如: 创建一个缓存器,用于换成某些接口的API数据,此时需要保证全局只有一个,可以使用 单例模式.</li>
+</ul>
+<ol start="3">
+<li>建造者模式</li>
+</ol>
+<ul>
+<li>适用场景: 复杂,需要精细化的构建对象</li>
+<li>例如: 创建一个动态表单</li>
+</ul>
+<h3 id="观察者模式-订阅-发布模式"><a href="#观察者模式-订阅-发布模式" class="headerlink" title="观察者模式(订阅/发布模式)"></a>观察者模式(订阅/发布模式)</h3><h4 id="1-是什么"><a href="#1-是什么" class="headerlink" title="1. 是什么?"></a>1. 是什么?</h4><ul>
+<li>目的: 当模块之间不方便直接沟通;</li>
+<li>使用方式:  通过一个中介模块,来转发消息.</li>
+</ul>
+<blockquote>
+<p>思考: 不方便直接沟通的模块有哪些?</p>
+</blockquote>
+<ol>
+<li><code>异步模块</code></li>
+</ol>
+<ul>
+<li>场景：一个任务异步操作,不知道什么时候完成,什么时候反馈.)</li>
+<li>例如：onclick 事件绑定-&gt;此处用到了观察者模式</li>
+</ul>
+<ol>
+<li><code>原本不在设计之内的模块</code></li>
+</ol>
+<ul>
+<li>例如: 首页-原本和评论模块没有关系,突然产品需要在首页新增评论模块,超出了设计预期;<strong><em>可以使用观察者模式,通过消息传递(类似于中介)进行传递.</em></strong></li>
+</ul>
+<h4 id="2-使用方式"><a href="#2-使用方式" class="headerlink" title="2. 使用方式:"></a>2. 使用方式:</h4><blockquote>
+<p>通过一个中介模块,来转发消息.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单写一个观察者模式方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 观察者对象</span></span><br><span class="line"><span class="keyword">let</span> observe = &#123;</span><br><span class="line">    <span class="comment">// 存储 注册监听</span></span><br><span class="line">    message:&#123;&#125;,</span><br><span class="line">    <span class="comment">// 订阅（注册监听）事件</span></span><br><span class="line">    regist:<span class="function">(<span class="params">type,fn</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">// 存入方法（type键名、fn值）</span></span><br><span class="line">        <span class="keyword">this</span>.message[type]=fn;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 发布事件</span></span><br><span class="line">    fire:<span class="function">(<span class="params">type</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.message[type]();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还在整理中。。。</p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_md/%E5%86%99%E4%BB%A3%E7%A0%81%E6%80%9D%E8%80%83%E6%AD%A5%E9%AA%A4/" rel="prev" title="写代码思考步骤">
+      <i class="fa fa-chevron-left"></i> 写代码思考步骤
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/categories/react/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/categories/react/">1</a><span class="page-number current">2</span><a class="page-number" href="/categories/react/page/3/">3</a><a class="extend next" rel="next" href="/categories/react/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MDkxMS8yNzM5Mw=="></div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -444,6 +358,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建型设计模式"><span class="nav-number">1.</span> <span class="nav-text">创建型设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者模式-订阅-发布模式"><span class="nav-number">2.</span> <span class="nav-text">观察者模式(订阅&#x2F;发布模式)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-是什么"><span class="nav-number">2.1.</span> <span class="nav-text">1. 是什么?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-使用方式"><span class="nav-number">2.2.</span> <span class="nav-text">2. 使用方式:</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -567,6 +482,21 @@
 
   
 
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
 </body>
 </html>
