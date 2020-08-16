@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"wuyanfeiying.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="通过学习React生命周期，配合使用State状态，来实现React时钟组件。   注意定义类组件的时候，组件名首字母一定要大写 需要使用this.setState()方法来更新组件的State状态。">
+  <meta name="description" content="《Webpack实战：入门、进阶与调优》读书笔记  何为Webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【react】生命周期配合State实现React时钟组件">
-<meta property="og:url" content="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%85%8D%E5%90%88State%E5%AE%9E%E7%8E%B0React%E6%97%B6%E9%92%9F%E7%BB%84%E4%BB%B6/index.html">
+<meta property="og:title" content="【读书】Webpack简介">
+<meta property="og:url" content="https://wuyanfeiying.github.io/2020/08/16/webpack_md/01-Webpack%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="EasonChu">
-<meta property="og:description" content="通过学习React生命周期，配合使用State状态，来实现React时钟组件。   注意定义类组件的时候，组件名首字母一定要大写 需要使用this.setState()方法来更新组件的State状态。">
+<meta property="og:description" content="《Webpack实战：入门、进阶与调优》读书笔记  何为Webpack">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-12T14:58:49.194Z">
-<meta property="article:modified_time" content="2020-07-12T15:26:57.925Z">
+<meta property="article:published_time" content="2020-08-16T08:33:44.639Z">
+<meta property="article:modified_time" content="2020-08-16T08:51:35.614Z">
 <meta property="article:author" content="EasonChu">
 <meta property="article:tag" content="javaScript">
-<meta property="article:tag" content="react">
+<meta property="article:tag" content="WebPack">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%85%8D%E5%90%88State%E5%AE%9E%E7%8E%B0React%E6%97%B6%E9%92%9F%E7%BB%84%E4%BB%B6/">
+<link rel="canonical" href="https://wuyanfeiying.github.io/2020/08/16/webpack_md/01-Webpack%E7%AE%80%E4%BB%8B/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>【react】生命周期配合State实现React时钟组件 | EasonChu</title>
+  <title>【读书】Webpack简介 | EasonChu</title>
   
 
 
@@ -175,7 +175,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wuyanfeiying.github.io/2020/07/12/react_md/%E3%80%90react%E3%80%91%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%85%8D%E5%90%88State%E5%AE%9E%E7%8E%B0React%E6%97%B6%E9%92%9F%E7%BB%84%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="https://wuyanfeiying.github.io/2020/08/16/webpack_md/01-Webpack%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://static01.imgkr.com/temp/62440d13d3f44327b0cd4642130cccab.jpg">
@@ -188,7 +188,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【react】生命周期配合State实现React时钟组件
+          【读书】Webpack简介
         </h1>
 
         <div class="post-meta">
@@ -199,7 +199,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-07-12 22:58:49 / 修改时间：23:26:57" itemprop="dateCreated datePublished" datetime="2020-07-12T22:58:49+08:00">2020-07-12</time>
+              <time title="创建时间：2020-08-16 16:33:44 / 修改时间：16:51:35" itemprop="dateCreated datePublished" datetime="2020-08-16T16:33:44+08:00">2020-08-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -207,7 +207,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                  <a href="/categories/WebPack/" itemprop="url" rel="index"><span itemprop="name">WebPack</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WebPack/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
                 </span>
             </span>
 
@@ -223,16 +227,42 @@
 
       
         <blockquote>
-<p>通过学习React生命周期，配合使用State状态，来实现React时钟组件。</p>
+<p>《Webpack实战：入门、进阶与调优》读书笔记</p>
 </blockquote>
-<ul>
-<li>注意定义类组件的时候，组件名首字母一定要大写</li>
-<li>需要使用<code>this.setState()</code>方法来更新组件的<code>State</code>状态。</li>
-</ul>
-<p>具体demo代码如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"id-div-clock"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>js:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取渲染目标对象</span></span><br><span class="line"><span class="keyword">let</span> clockDivId = <span class="built_in">document</span>.getElementById(<span class="string">'id-div-clock'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义React ES6 类组件(渲染源对象)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClockReactComp</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="comment">//    构造函数</span></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="comment">// 通过super关键字调用props参数，实现对父类构造方法的引用。</span></span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="comment">// 初始化 state</span></span><br><span class="line">        <span class="keyword">this</span>.state = &#123;<span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生命周期方法，在第一次渲染DOM后调用，只作用于客户端</span></span><br><span class="line">    <span class="comment">// 生成一个定时器，每隔一秒执行一次</span></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.timerId = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.tick(), <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在组件被DOM移除之前会被立即调用</span></span><br><span class="line">    <span class="comment">// 销毁定时器</span></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        clearInterval(<span class="keyword">this</span>.timerId)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 this.setState 更新State</span></span><br><span class="line">    tick() &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                date: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">            &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回出 JSX代码</span></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;span&gt;</span><br><span class="line">                &lt;h3&gt;自动更新的React时钟组件&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">            &lt;p&gt;现在的时间为：&#123;this.state.date.toLocaleTimeString()&#125;&lt;/</span>p&gt;</span><br><span class="line">            &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/    调用ReactDOM 渲染方法，渲染视图</span></span><br><span class="line"><span class="regexp">ReactDOM.render(&lt;ClockReactComp/</span>&gt;, clockDivId)</span><br></pre></td></tr></table></figure>
+<h3 id="何为Webpack"><a href="#何为Webpack" class="headerlink" title="何为Webpack"></a>何为Webpack</h3><p>Webpack是一个开源的JavaScript模块打包工具，其最核心的功能是解决模块之间的依赖，把各个模块按照特定的规则和顺序组织在一起，最终合并为一个JS文件（有时会有多个，这里讨论的只是最基本的情况）。这个过程就叫作模块打包。</p>
+<hr>
+<h3 id="模块打包工具"><a href="#模块打包工具" class="headerlink" title="模块打包工具"></a>模块打包工具</h3><p>模块打包工具（module bundler）的任务就是解决模块间的依赖，使其打包后的结果能运行在浏览器上。</p>
+<hr>
+<h3 id="为什么选择Webpack"><a href="#为什么选择Webpack" class="headerlink" title="为什么选择Webpack"></a>为什么选择Webpack</h3><ol>
+<li><p>Webpack默认支持多种模块标准，包括AMD、CommonJS，以及最新的ES6模块，而其他工具大多只能支持一到两种。这对于一些同时使用多种模块标准的</p>
+</li>
+<li><p>Webpack有完备的代码分割（code splitting）解决方案。从字面意思去理解，它可以分割打包后的资源，首屏只加载必要的部分，不太重要的功能放到后面动态地加载</p>
+</li>
+<li><p>Webpack可以处理各种类型的资源。除了JavaScript以外，Webpack还可以处理样式、模板，甚至图片等，而开发者需要做的仅仅是导入它。</p>
+</li>
+</ol>
+<h3 id="使用npm-scripts"><a href="#使用npm-scripts" class="headerlink" title="使用npm  scripts"></a>使用<code>npm  scripts</code></h3><p>之前使用webpack打包需要在命令行输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --entry&#x3D;.&#x2F;index.js --output-filename&#x3D;bundle.js --mode&#x3D;development</span><br></pre></td></tr></table></figure>
+<p>为了使命令行指令更加简洁，我们可以在<code>package.json</code>中添加一个脚本命令。<br>scripts是npm提供的脚本命令功能，在这里我们可以直接使用由模块所添加的指令（比如用“webpack”取代之前的“npx webpack</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">……￼</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;￼</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"webpack --entry=./index.js --output-filename=bundle.js --mode=development"</span>￼</span><br><span class="line">  &#125;,￼</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用配置文件"><a href="#使用配置文件" class="headerlink" title="使用配置文件"></a>使用配置文件</h3><p>工程源代码放在/src中，输出资源放在/dist中。</p>
+<h3 id="使用配置文件-1"><a href="#使用配置文件-1" class="headerlink" title="使用配置文件"></a>使用配置文件</h3><p>Webpack的默认配置文件为webpack.config.js</p>
+<h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a><code>webpack-dev-server</code></h3><ol>
+<li><p>webpack-dev-server可以看作一个服务者，它的主要工作就是接收浏览器的请求，然后将资</p>
+</li>
+<li><p>源返回。当服务启动时，会先让Webpack进行模块打包并将资源准备好（在示例中就是bundle.js）。</p>
+</li>
+<li><p>而webpack-dev-server只是将打包结果放在内存中，并不会写入实际的bundle.js，在每次webpack-dev-server接收到请求时都只是将内存中的打包结果返回给浏览器。</p>
+</li>
+</ol>
+<h3 id="第一章小结"><a href="#第一章小结" class="headerlink" title="第一章小结"></a>第一章小结</h3><ol>
+<li><p>Webpack的功能，它可以处理模块之间的依赖，将它们串联起来合并为单一的JS文件。在安装Webpack时我们一般选择在项目本地安装的方式，这样可以使团队开发时共用一个版本，并且可以让其他插件直接获取Webpack的内部模块。配置本地开发环境可以借助npm scripts来维护命令行脚本，当打包脚本参数过多时，我们需要将其转化为webpack.config.js，用文件的方式维护复杂的Webpack配置。</p>
+</li>
+<li><p>webpack-dev-server的作用是启动一个本地服务，可以处理打包资源与静态文件的请求。它的live-reloading功能可以监听文件变化，自动刷新页面来提升开发效率。</p>
+</li>
+</ol>
+
     </div>
 
     
@@ -242,7 +272,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/javaScript/" rel="tag"># javaScript</a>
-              <a href="/tags/react/" rel="tag"># react</a>
+              <a href="/tags/WebPack/" rel="tag"># WebPack</a>
           </div>
 
         
@@ -251,13 +281,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/07/12/react_md/%E3%80%90react%E3%80%91React%20State%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" rel="prev" title="【react】React State与生命周期">
-      <i class="fa fa-chevron-left"></i> 【react】React State与生命周期
+    <a href="/2020/08/04/react_md/%E3%80%90react%E3%80%91%E5%AE%98%E7%BD%91demo%E7%BB%83%E4%B9%A0%E5%8F%8A%E6%80%BB%E7%BB%93/" rel="prev" title="【react】官网demo练习(井字棋)及总结">
+      <i class="fa fa-chevron-left"></i> 【react】官网demo练习(井字棋)及总结
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/12/react_md/%E3%80%90react%E3%80%91%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8State%E7%8A%B6%E6%80%81/" rel="next" title="【react】正确使用State状态">
-      【react】正确使用State状态 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -321,6 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#何为Webpack"><span class="nav-number">1.</span> <span class="nav-text">何为Webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块打包工具"><span class="nav-number">2.</span> <span class="nav-text">模块打包工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么选择Webpack"><span class="nav-number">3.</span> <span class="nav-text">为什么选择Webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用npm-scripts"><span class="nav-number">4.</span> <span class="nav-text">使用npm  scripts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用配置文件"><span class="nav-number">5.</span> <span class="nav-text">使用配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用配置文件-1"><span class="nav-number">6.</span> <span class="nav-text">使用配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack-dev-server"><span class="nav-number">7.</span> <span class="nav-text">webpack-dev-server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章小结"><span class="nav-number">8.</span> <span class="nav-text">第一章小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
